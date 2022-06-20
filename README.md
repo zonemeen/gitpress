@@ -1,1 +1,1 @@
-# gitpress-action
+# gitpress

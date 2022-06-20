@@ -1,0 +1,39 @@
+<%- include('_includes/header'); -%>
+
+<header class="intro mar-tb-7">
+    <h1 class="intro__head"><%- siteConfig.title %>
+        <div class="intro__sub"><%- siteConfig.subtitle %></div>
+    </h1>
+</header>
+
+<%
+let counter = 0;
+const years = Array.from(groupedPosts.keys()).sort((a, b) => b - a) || [];
+const mid = parseInt((years.length / 2) || 1, 10) - 1;
+        for (let year of years) {
+%>
+    <section id="y <%- year %>" class="mar-b-7">
+        <h3 class="section__title"><%- year %></h3>
+        <div class="post-list">
+            <% for (let post of groupedPosts.get(year)) { %>
+                <a class="post" href="<%- post.externalUrl || post.permalink %>" target="<%- post.externalUrl ? '_blank': '_self' %>">
+                    <span class="post__title"><%- post.title %></span>
+                    <time class="post__date" datetime=" 2018-12-04"><%- post.date %></time>
+                </a>
+            <% } %>
+        </div>
+    </section>
+    <% if (counter === mid) { %>
+        <%- include('_includes/newsletter', { siteConfig }) %>
+    <% } %>
+<%
+    counter++;
+}
+%>
+
+<!-- If counter never reached 1 -->
+<% if (counter === 0) { %>
+    <%- include('_includes/newsletter', { siteConfig }) %>
+<% } %>
+
+<%- include('_includes/footer', { siteConfig }) %>
