@@ -172,12 +172,12 @@ export async function prepareTheme(configuration: ConfigurationType) {
 
   async function prepareHome(posts: PostType[]) {
     info('Preparing homepage')
-    posts.sort((a, b) => dayjs(b.date).valueOf() - dayjs(a.date).valueOf())
-
     const groupedPosts = posts.reduce((aggMap, postItem) => {
       const year = dayjs(postItem.date).format('YYYY')
 
-      aggMap.set(year, [...(aggMap.get(year) || []), postItem])
+      const postItems = [...(aggMap.get(year) || []), postItem]
+      postItems.sort((a, b) => dayjs(b.date).date() - dayjs(a.date).date())
+      aggMap.set(year, postItems)
 
       return aggMap
     }, new Map())

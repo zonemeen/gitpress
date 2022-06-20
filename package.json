@@ -1,6 +1,6 @@
 {
   "name": "@zonemeen/gitpress",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Create your blog platform from Markdown files via github actions",
   "main": "lib/index.js",
   "scripts": {
