@@ -351,10 +351,11 @@ function prepareTheme(configuration) {
         function prepareHome(posts) {
             return __awaiter(this, void 0, void 0, function* () {
                 (0, core_1.info)('Preparing homepage');
-                posts.sort((a, b) => (0, dayjs_1.default)(b.date).date() - (0, dayjs_1.default)(a.date).date());
                 const groupedPosts = posts.reduce((aggMap, postItem) => {
                     const year = (0, dayjs_1.default)(postItem.date).format('YYYY');
-                    aggMap.set(year, [...(aggMap.get(year) || []), postItem]);
+                    const postItems = [...(aggMap.get(year) || []), postItem];
+                    postItems.sort((a, b) => (0, dayjs_1.default)(b.date).valueOf() - (0, dayjs_1.default)(a.date).valueOf());
+                    aggMap.set(year, postItems);
                     return aggMap;
                 }, new Map());
                 const homeHtml = yield ejs_1.default.renderFile(path_1.default.join(themePath, 'index.ejs'), {
