@@ -6,7 +6,7 @@ runs:
   main: 'dist/index.js'
 branding:
   icon: 'git-commit'
-  color: 'orange'
+  color: 'blue'
 inputs:
   token:
     description: >
