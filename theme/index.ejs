@@ -15,7 +15,7 @@ const mid = parseInt((years.length / 2) || 1, 10) - 1;
     <section id="y <%- year %>" class="mar-b-7">
         <h3 class="section__title"><%- year %></h3>
         <div class="post-list">
-            <% for (let post of Array.from(groupedPosts.get(year)).sort((a, b) => new Date(b).valueOf() - new Date(a).valueOf())) { %>
+            <% for (let post of Array.from(groupedPosts.get(year)).sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())) { %>
                 <a class="post" href="<%- post.externalUrl || post.permalink %>" target="<%- post.externalUrl ? '_blank': '_self' %>">
                     <span class="post__title"><%- post.title %></span>
                     <time class="post__date" datetime="<%- post.date %>"><%- post.date %></time>
