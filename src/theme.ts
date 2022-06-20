@@ -176,7 +176,9 @@ export async function prepareTheme(configuration: ConfigurationType) {
       const year = dayjs(postItem.date).format('YYYY')
 
       const postItems = [...(aggMap.get(year) || []), postItem]
-      postItems.sort((a, b) => dayjs(b.date).date() - dayjs(a.date).date())
+      postItems.sort(
+        (a, b) => dayjs(b.date).valueOf() - dayjs(a.date).valueOf()
+      )
       aggMap.set(year, postItems)
 
       return aggMap
