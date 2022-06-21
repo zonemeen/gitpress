@@ -1,5 +1,5 @@
 import { execute } from './execute'
-import { ConfigurationType } from './git'
+import { ConfigurationType } from './types'
 
 export async function deploy(configuration: ConfigurationType) {
   const outputPath = configuration.outputDir

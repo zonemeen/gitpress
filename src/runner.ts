@@ -1,7 +1,8 @@
 import { info } from '@actions/core'
-import { ConfigurationType, configureRepo } from './git'
+import { configureRepo } from './git'
 import { prepareTheme } from './theme'
 import { deploy } from './deploy'
+import { ConfigurationType } from './types'
 
 export async function run(configuration: ConfigurationType) {
   info('Checking configuration and starting deployment')

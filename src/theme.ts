@@ -7,44 +7,12 @@ import path from 'path'
 import fsExtra from 'fs-extra'
 import fs from 'fs'
 import { info } from '@actions/core'
-import { ConfigurationType } from './git'
-
-interface FrontMatterType {
-  title: string
-  date: string
-  permalink: string
-  externalUrl: string
-}
-
-interface PostType {
-  title: string
-  date: string
-  permalink: string
-  externalUrl: string
-  html: string
-}
-
-interface SiteConfigType {
-  title: string
-  subtitle: string
-  baseUrl: string
-  owner: {
-    name: string
-    email: string
-  }
-  social: {
-    github: string
-    twitter: string
-    medium: string
-  }
-  seo: {
-    title: string
-    description: string
-    author: string
-    keywords: string[]
-  }
-  cname: string
-}
+import {
+  FrontMatterType,
+  PostType,
+  SiteConfigType,
+  ConfigurationType
+} from './types'
 
 const htmlConverter = new showdown.Converter()
 

@@ -1,18 +1,6 @@
 import { info } from '@actions/core'
 import { execute } from './execute'
-
-export interface ConfigurationType {
-  repoPath: string
-  pusherName: string
-  pusherEmail: string
-  repoUrl: string
-  token: string
-  repositoryName: string
-  hostname: string
-  outputDir: string
-  branch: string
-  themeDir: string
-}
+import { ConfigurationType } from './types'
 
 export async function configureRepo(configuration: ConfigurationType) {
   info('Configuring git')
