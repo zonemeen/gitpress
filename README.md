@@ -1,5 +1,5 @@
 <p align="center">
-  <img height="150" src="./.github/assets/logo.png" />
+  <img height="120" src="./.github/assets/logo.png" />
   <h2 align="center">Gitpress</h2>
   <p align="center">Create a minimalist markdown blogging platform from Markdown files via github actions<p>
   <p align="center">
