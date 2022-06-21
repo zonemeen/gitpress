@@ -411,7 +411,7 @@
 }
 
 .link-github:hover {
-    color: #333 !important
+    color: #00A3EC !important
 }
 
 .link-medium:hover {
@@ -726,12 +726,10 @@ footer {
     font-size: .95rem;
     color: #333;
     text-decoration: none;
-    transition: color .25s, padding-left .25s
 }
 
 .post:hover {
     color: #0087F8;
-    padding-left: 1rem
 }
 
 .post__title {
