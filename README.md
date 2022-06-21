@@ -1,13 +1,21 @@
 <p align="center">
-  <h2 align="center">gitpress</h2>
+  <img height="150" src="./.github/assets/logo.png" />
+  <h2 align="center">Gitpress</h2>
   <p align="center">Create a minimalist markdown blogging platform from Markdown files via github actions<p>
+  <p align="center">
+    <a href="https://zonemeen.github.io">
+    	<img src="https://img.shields.io/badge/-Visit%20Sample%20Blog%20‎ ‎ -blue.svg?style=flat&colorA=blue" alt="zonemeen.github.io" />
+    </a>
+    <a href="https://github.com/zonemeen/gitpress/blob/main/LICENSE">
+    	<img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Gitpress is released under the MIT license." />
+    </a>
+  </p>
 </p>
 
 ## Usage Example
 
-* [Codebase](https://github.com/zonemeen/zonemeen.github.io)
-* [Sample Blog](https://zonemeen.github.io/)
-
+- [Codebase](https://github.com/zonemeen/zonemeen.github.io)
+- [Sample Blog](https://zonemeen.github.io/)
 
 ## Configure the Blog
 
@@ -26,6 +34,7 @@ Create a repository(deployed via GitHub Pages, usually named yourname.github.io)
 ```
 
 ### About Page
+
 `about.md` is the markdown file containing the content for your about page.
 
 ### Blog Configuration
@@ -65,6 +74,7 @@ Create a repository(deployed via GitHub Pages, usually named yourname.github.io)
 And `cname` is your personal domain if applicable.
 
 ### Blog Posts
+
 `posts/` is the directory containing all your blog posts in Markdown format. It supports the following frontmatter at the top of each blog post
 
 ```shell
