@@ -1,20 +1,19 @@
 import ejs from 'ejs'
 import dayjs from 'dayjs'
 import slugify from 'slugify'
-import showdown from 'showdown'
-import fm, { FrontMatterResult } from 'front-matter'
+import grayMatter from 'gray-matter'
+import MarkdownIt from 'markdown-it'
 import path from 'path'
 import fsExtra from 'fs-extra'
 import fs from 'fs'
 import { info } from '@actions/core'
-import {
-  FrontMatterType,
-  PostType,
-  SiteConfigType,
-  ConfigurationType
-} from './types'
+import { PostType, SiteConfigType, ConfigurationType } from './types'
 
-const htmlConverter = new showdown.Converter()
+const markdown = MarkdownIt({
+  html: true,
+  breaks: true,
+  linkify: true
+})
 
 export async function prepareTheme(configuration: ConfigurationType) {
   const outputDir = configuration.outputDir
@@ -55,10 +54,10 @@ export async function prepareTheme(configuration: ConfigurationType) {
 
     for (let contentFile of postFiles) {
       const contentFilePath = path.join(postsDir, contentFile)
-      const content = fs.readFileSync(contentFilePath, 'utf-8')
-      const parsed = fm(content) as FrontMatterResult<FrontMatterType>
+      const rawContent = fs.readFileSync(contentFilePath, 'utf-8')
+      const { data, content } = grayMatter(rawContent)
 
-      let { title, date, permalink, externalUrl } = parsed.attributes
+      let { title, date, permalink, externalUrl } = data
 
       if (!date) {
         date = dayjs().format('ddd, MMMM DD, YYYY')
@@ -66,8 +65,7 @@ export async function prepareTheme(configuration: ConfigurationType) {
         date = dayjs(date).format('ddd, MMMM DD, YYYY')
       }
 
-      const postHtml = htmlConverter.makeHtml(parsed.body)
-
+      const postHtml = markdown.render(content)
       const fullFileName = (permalink || slugify(title).toLowerCase()).replace(
         /^\//,
         ''
@@ -111,7 +109,7 @@ export async function prepareTheme(configuration: ConfigurationType) {
       path.join(repoPath, 'about.md'),
       'utf-8'
     )
-    const html = htmlConverter.makeHtml(aboutContent)
+    const html = markdown.render(aboutContent)
 
     const populatedTemplate = await ejs.renderFile(
       path.join(themePath, 'about.ejs'),
