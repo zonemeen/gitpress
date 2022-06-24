@@ -1,24 +1,59 @@
 import ejs from 'ejs'
 import dayjs from 'dayjs'
-import slugify from 'slugify'
 import grayMatter from 'gray-matter'
-import MarkdownIt from 'markdown-it'
 import path from 'path'
 import fsExtra from 'fs-extra'
 import fs from 'fs'
 import { info } from '@actions/core'
+import MarkdownIt from 'markdown-it'
+import Prism from 'markdown-it-prism'
+import anchor from 'markdown-it-anchor'
+// @ts-expect-error missing types
+import TOC from 'markdown-it-table-of-contents'
+import LinkAttributes from 'markdown-it-link-attributes'
 import { PostType, SiteConfigType, ConfigurationType } from './types'
+import { slugify } from './utils'
+
+import 'prismjs/components/prism-regex'
+import 'prismjs/components/prism-javascript'
+import 'prismjs/components/prism-typescript'
+import 'prismjs/components/prism-xml-doc'
+import 'prismjs/components/prism-yaml'
+import 'prismjs/components/prism-json'
+import 'prismjs/components/prism-markdown'
+import 'prismjs/components/prism-java'
+import 'prismjs/components/prism-javadoclike'
+import 'prismjs/components/prism-javadoc'
+import 'prismjs/components/prism-jsdoc'
 
 const markdown = MarkdownIt({
   html: true,
   breaks: true,
   linkify: true
 })
+  .use(Prism)
+  .use(anchor, {
+    slugify,
+    permalink: anchor.permalink.linkInsideHeader({
+      symbol: '#',
+      renderAttrs: () => ({ 'aria-hidden': 'true' })
+    })
+  })
+  .use(LinkAttributes, {
+    matcher: (link: string) => /^https?:\/\//.test(link),
+    attrs: {
+      target: '_blank',
+      rel: 'noopener'
+    }
+  })
+  .use(TOC, {
+    includeLevel: [1, 2, 3],
+    slugify
+  })
 
 export async function prepareTheme(configuration: ConfigurationType) {
   const outputDir = configuration.outputDir
   const repoPath = configuration.repoPath
-
   const siteConfig: SiteConfigType = require(path.join(
     configuration.repoPath,
     './site.json'
