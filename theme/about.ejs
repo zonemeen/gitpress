@@ -18,19 +18,20 @@
             </a>
         <% } %>
 
-        { <% if (siteConfig.social.twitter) { %>
-        <a target="_blank" class="post link-github" href="https://github.com/<%- siteConfig.social.twitter %>">
-            <span class="post__title">Twitter</span>
-            <span class="post__date"><%- siteConfig.social.twitter %></span>
-        </a>
-        <% } %>}
+            { <% if (siteConfig.social.twitter) { %>
+                <a target="_blank" class="post link-github" href="https://twitter.com/<%- siteConfig.social.twitter %>">
+                    <span class="post__title">Twitter</span>
+                    <span class="post__date"><%- siteConfig.social.twitter %></span>
+                </a>
+            <% } %>}
+            
+            { <% if (siteConfig.owner.email) { %>
+                <a target="_blank" class="post link-email" href="mailto:<%- siteConfig.owner.email %>">
+                    <span class="post__title">Email</span>
+                    <span class="post__date"><%- siteConfig.owner.email %></span>
+                </a>
+            <% } %>}
 
-        { <% if (siteConfig.owner.email) { %>
-        <a target="_blank" class="post link-email" href="mailto:<%- siteConfig.owner.email %>">
-            <span class="post__title">Email</span>
-            <span class="post__date"><%- siteConfig.owner.email %></span>
-        </a>
-        <% } %>}
     </div>
 </section>
 
