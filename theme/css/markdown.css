@@ -1,5 +1,3 @@
-@import 'prism-theme-vars/base.css';
-
 :root {
   --prism-font-size: 0.9rem;
   --prism-font-family: 'Fira Code', monospace;
