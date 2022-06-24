@@ -1,7 +1,7 @@
 <p align="center">
   <img height="120" src="./.github/assets/logo.png" />
   <h2 align="center">Gitpress</h2>
-  <p align="center">Create a minimalist markdown blogging platform from Markdown files via github actions<p>
+  <p align="center">Create a minimalist markdown blogging platform via github actions<p>
   <p align="center">
     <a href="https://zonemeen.github.io">
     	<img src="https://img.shields.io/badge/-Visit%20Sample%20Blog%20‎ ‎ -blue.svg?style=flat&colorA=blue" alt="zonemeen.github.io" />
@@ -49,10 +49,18 @@ Create a repository(deployed via GitHub Pages, usually named yourname.github.io)
     "name": "zonemeen",
     "email": "miqilin18@gmail.com"
   },
-  "social": {
-    "github": "zonemeen",
-    "twitter": "zonemeen"
-  },
+  "social": [
+    {
+      "type": "Github",
+      "name": "zonemeen",
+      "url": "https://github.com/zonemeen"
+    },
+    {
+      "type": "Twitter",
+      "name": "zonemeen",
+      "url": "https://twitter.com/zonemeen"
+    }
+  ],
   "seo": {
     "title": "zonemeen's blog",
     "description": "A front-end engineer's article sharing",
@@ -108,7 +116,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deploy
-        uses: zonemeen/gitpress@v1.0.8 # Use latest version
+        uses: zonemeen/gitpress@v1.0.12 # Use latest version
         with:
           branch: gh-pages # Optional branch for GitHub Pages
 ```
