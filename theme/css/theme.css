@@ -453,7 +453,7 @@ body {
 p {
     margin-bottom: 1.5rem;
     font-family: "Alegreya", "Times New Roman", Georgia, serif;
-    font-size: 110%;
+    font-size: 100%;
     line-height: 140%
 }
 
@@ -506,7 +506,7 @@ img, video {
 
 ol li, ul li {
     font-family: "Alegreya", "Times New Roman", Georgia, serif;
-    font-size: 110%
+    font-size: 100%
 }
 
 ol li > p, ul li > p {

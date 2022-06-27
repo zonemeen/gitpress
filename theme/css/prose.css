@@ -47,10 +47,10 @@
 .prose ol[type="1"] {
   --list-counter-style: decimal;
 }
-.prose ol > li {
+/*.prose ol > li {
   position: relative;
   padding-left: 1.75em;
-}
+}*/
 .prose ol > li::before {
   content: counter(list-item, var(--list-counter-style, decimal)) ".";
   position: absolute;
@@ -58,10 +58,10 @@
   color: #6b7280;
   left: 0;
 }
-.prose ul > li {
+/*.prose ul > li {
   position: relative;
   padding-left: 1.75em;
-}
+}*/
 .prose ul > li::before {
   content: "";
   position: absolute;
@@ -243,12 +243,12 @@
 .prose ol {
   margin-top: 1.25em;
   margin-bottom: 1.25em;
-  list-style-type: none;
+  list-style-type: decimal;
 }
 .prose ul {
   margin-top: 1.25em;
   margin-bottom: 1.25em;
-  list-style-type: none;
+  list-style-type: disc;
 }
 .prose li {
   margin-top: 0.5em;
