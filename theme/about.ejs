@@ -1,6 +1,6 @@
 <%- include('_includes/header', { siteConfig }); -%>
 
-<div class="about__content pad-0">
+<div class="about__content pad-0 prose">
     <h2><%- siteConfig.owner.name %></h2>
     <p class="about__head"></p>
     <div class="about__description">
@@ -8,7 +8,7 @@
     </div>
 </div>
 
-<section id="contact" class="mar-b-7">
+<section id="contact" class="mar-b-7 prose">
     <h3 class="section__title">Elsewhere</h3>
     <div class="post-list">
         <% for (let post of siteConfig.social) { %>

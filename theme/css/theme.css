@@ -415,7 +415,7 @@
 }
 
 .link-medium:hover {
-    color: #00AB72 !important
+    color: #00A3EC !important
 }
 
 .link-twitter:hover {
@@ -423,15 +423,15 @@
 }
 
 .link-email:hover {
-    color: #FF554A !important
+    color: #00A3EC !important
 }
 
 .link-keybase:hover {
-    color: #FF6F29 !important
+    color: #00A3EC !important
 }
 
 .link-hacker-news:hover {
-    color: #FF6327 !important
+    color: #00A3EC !important
 }
 
 *, *:before, *:after {
@@ -440,8 +440,8 @@
 }
 
 body {
-    margin: auto;
-    max-width: 39rem;
+    margin: 0 auto;
+    max-width: 42.6rem;
     padding: 1rem;
     background-color: #fff;
     color: #333;
@@ -454,7 +454,7 @@ p {
     margin-bottom: 1.5rem;
     font-family: "Alegreya", "Times New Roman", Georgia, serif;
     font-size: 100%;
-    line-height: 140%
+    line-height: 160%
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -468,7 +468,7 @@ a {
 }
 
 a:hover {
-    color: #FF554A
+    color: #00A3EC
 }
 
 hr {
@@ -491,7 +491,7 @@ blockquote {
 }
 
 blockquote p {
-    color: #0087F8;
+    color: #00A3EC;
     font: 300 1.5rem "Lato", -apple-system, Helvetica, Arial, sans-serif;
     line-height: 2rem;
     text-align: center
@@ -525,7 +525,7 @@ sup a {
 }
 
 sup a:hover {
-    color: #FF554A
+    color: #00A3EC
 }
 
 time {
@@ -585,7 +585,7 @@ table td {
 }
 
 .nav a:hover {
-    color: #0087F8
+    color: #00A3EC
 }
 
 .nav__right a, .nav__left a {
@@ -627,7 +627,7 @@ footer {
 }
 
 .whoami:hover {
-    color: #0087F8
+    color: #00A3EC
 }
 
 .about {
@@ -662,7 +662,7 @@ footer {
     margin-bottom: 0;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid #E8E8E8;
-    color: #00AB72;
+    color: #00A3EC;
     font-size: 1.15rem;
     font-weight: 700;
     font-style: normal
@@ -729,7 +729,7 @@ footer {
 }
 
 .post:hover {
-    color: #0087F8;
+    color: #00A3EC;
 }
 
 .post__title {
@@ -839,12 +839,12 @@ pre .lineno {
 }
 
 .mc-form__email:hover {
-    border-color: #0087F8;
+    border-color: #00A3EC;
     transition: border-color .25s
 }
 
 .mc-form__email:focus {
-    border-color: #FF554A;
+    border-color: #00A3EC;
     transition: border-color .25s
 }
 
