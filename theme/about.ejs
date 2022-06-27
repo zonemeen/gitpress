@@ -6,24 +6,4 @@
     </div>
 </div>
 
-<section id="contact" class="mar-b-7 prose">
-    <h3 class="section__title">Elsewhere</h3>
-    <div class="post-list">
-        <% for (let post of siteConfig.social) { %>
-            <a target="_blank" class="post link-github" href="<%- post.url %>">
-                <span class="post__title"><%- post.type %></span>
-                <span class="post__date"><%- post.name %></span>
-            </a>
-        <% } %>
-
-        <% if (siteConfig.owner.email) { %>
-        <a target="_blank" class="post link-email" href="mailto:<%- siteConfig.owner.email %>">
-            <span class="post__title">Email</span>
-            <span class="post__date"><%- siteConfig.owner.email %></span>
-        </a>
-        <% } %>
-
-    </div>
-</section>
-
 <%- include('_includes/footer', { siteConfig }) %>
