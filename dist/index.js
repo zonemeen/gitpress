@@ -279,8 +279,8 @@ __nccwpck_require__(1618);
 __nccwpck_require__(6131);
 const markdown = (0, markdown_it_1.default)({
     html: true,
-    breaks: true,
-    linkify: true
+    xhtmlOut: true,
+    typographer: true
 })
     .use(markdown_it_prism_1.default)
     .use(markdown_it_anchor_1.default, {

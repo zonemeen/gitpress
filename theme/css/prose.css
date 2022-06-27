@@ -250,6 +250,11 @@
   margin-bottom: 1.25em;
   list-style-type: disc;
 }
+.prose .table-of-contents ul {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  list-style-type: none;
+}
 .prose li {
   margin-top: 0.5em;
   margin-bottom: 0.5em;

@@ -28,8 +28,8 @@ import 'prismjs/components/prism-jsdoc'
 
 const markdown = MarkdownIt({
   html: true,
-  breaks: true,
-  linkify: true
+  xhtmlOut: true,
+  typographer: true
 })
   .use(Prism)
   .use(anchor, {
@@ -153,7 +153,6 @@ export async function prepareTheme(configuration: ConfigurationType) {
         html
       }
     )
-
     fs.writeFileSync(path.join(outputDir, 'about.html'), populatedTemplate)
   }
 
@@ -170,7 +169,6 @@ export async function prepareTheme(configuration: ConfigurationType) {
     info('Preparing homepage')
     const groupedPosts = posts.reduce((aggMap, postItem) => {
       const year = dayjs(postItem.date).format('YYYY')
-
       const postItems = [...(aggMap.get(year) || []), postItem]
       postItems.sort(
         (a, b) => dayjs(b.date).valueOf() - dayjs(a.date).valueOf()
