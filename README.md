@@ -52,12 +52,10 @@ Create a repository(deployed via GitHub Pages, usually named yourname.github.io)
   "social": [
     {
       "type": "Github",
-      "name": "zonemeen",
       "url": "https://github.com/zonemeen"
     },
     {
       "type": "Twitter",
-      "name": "zonemeen",
       "url": "https://twitter.com/zonemeen"
     }
   ],
