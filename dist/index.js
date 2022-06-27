@@ -342,7 +342,7 @@ function prepareTheme(configuration) {
                     else {
                         date = (0, dayjs_1.default)(date).format('ddd, MMMM DD, YYYY');
                     }
-                    const postHtml = markdown.render(content);
+                    const postHtml = markdown.render(content).replace('../static', '');
                     const fullFileName = (permalink || (0, utils_1.slugify)(title).toLowerCase()).replace(/^\//, '');
                     const fullFileNameParts = fullFileName.replace(/\/$/, '').split('/');
                     const fileName = fullFileNameParts.pop() || '';
