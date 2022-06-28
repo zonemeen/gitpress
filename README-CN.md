@@ -26,12 +26,13 @@
 ├── about.md
 ├── site.json
 ├── posts
-  ├── better-javascript.md
-  ├── Vue vs React.md
-  └── technique-in-typescript.md
+      ├── better-javascript.md
+      ├── Vue vs React.md
+      └── technique-in-typescript.md
 └── static
-    ├── resume.pdf
-    └── me.jpg
+      ├── resume.pdf
+      └── assets
+            └── me.jpg
 ```
 
 ### 关于页面
