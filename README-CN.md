@@ -115,7 +115,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deploy
-        uses: zonemeen/gitpress@v1.0.12 # 使用最新版本
+        uses: zonemeen/gitpress@v1.0.12 # 查看 https://github.com/marketplace/actions/gitpress-deploy-blog-action，使用最新版本
         with:
           branch: gh-pages # GitHub Pages的可选分支
 ```

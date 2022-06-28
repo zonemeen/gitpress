@@ -115,7 +115,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deploy
-        uses: zonemeen/gitpress@v1.0.12 # Use latest version
+        uses: zonemeen/gitpress@v1.0.27 # Visit https://github.com/marketplace/actions/gitpress-deploy-blog-action, use latest version 
         with:
           branch: gh-pages # Optional branch for GitHub Pages
 ```
