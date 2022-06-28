@@ -1,7 +1,7 @@
 <p align="center">
   <img height="120" src="./.github/assets/logo.png" />
   <h2 align="center">Gitpress</h2>
-  <p align="center">Create a minimalist markdown blogging platform via Github Actions<p>
+  <p align="center">通过Github Actions创建一个简约的markdown博客平台<p>
   <p align="center">
     <a href="https://zonemeen.github.io">
     	<img src="https://img.shields.io/badge/-Visit%20Sample%20Blog%20‎ ‎ -blue.svg?style=flat&colorA=blue" alt="zonemeen.github.io" />
@@ -12,15 +12,15 @@
   </p>
 </p>
 
-## Usage Example
+## 使用示例
 
-- [Codebase](https://github.com/zonemeen/zonemeen.github.io)
-- [Blog Website](https://zonemeen.github.io/)
-- [简体中文](./README-CN.md)
+- [代码库](https://github.com/zonemeen/zonemeen.github.io)
+- [博客地址](https://zonemeen.github.io/)
+- [English](./README.md)
 
-## Configure the Blog
+## 配置博客
 
-Create a repository(deployed via GitHub Pages, usually named yourname.github.io) on GitHub to host your blog, with the following directory structure:
+在GitHub上创建一个仓库（通过GitHub Pages部署，通常命名为yourname.github.io）来托管你的博客，其目录结构如下：
 
 ```shell
 ├── about.md
@@ -34,13 +34,13 @@ Create a repository(deployed via GitHub Pages, usually named yourname.github.io)
     └── me.jpg
 ```
 
-### About Page
+### 关于页面
 
-`about.md` is the markdown file containing the content for your about page.
+`about.md` 是包含关于页面内容的markdown文件。
 
-### Site Configuration
+### 站点配置
 
-`site.json` contains the configuration of the blog. Given below is the sample JSON configuration.
+`site.json` 包含博客站点的配置，下面是JSON配置的例子：
 
 ```json
 {
@@ -78,11 +78,11 @@ Create a repository(deployed via GitHub Pages, usually named yourname.github.io)
 }
 ```
 
-And `cname` is your personal domain if applicable.
+`cname`是你的个人域名（如果适用的话）。
 
-### Blog Posts
+### 博客文章
 
-`posts/` is the directory containing all your blog posts in Markdown format. It supports the following front-matter at the top of each blog post
+`posts/` 是包含你所有markdown格式的博客文章的目录，它支持在每篇博文的顶部有以下的头字段（front-matter）：
 
 ```shell
 ---
@@ -94,15 +94,15 @@ permalink: /first-blog-ghpages
 Content for your bog post
 ```
 
-Where `title` is the blog post title shown on the homepage as well as on the artical detail page. `date` is the blog post date. `permalink` is the path to the artical detail page.
+其中`title`是博客文章的标题，显示在主页和文章详情页上；`date`是博客文章的日期；`permalink`是通往文章详情页的路径。
 
-### Static Assets
+### 静态资源
 
-The contents of the `static` folder will be copied at the root of your blog and will be accessible via `http://[blogurl]/filename`
+`static` 文件夹的内容会被复制到你的博客根部，并可通过 `http://[blogurl]/filename` 访问。
 
-## Configure GitHub Actions
+## 配置GitHub Actions
 
-Once you have set up your blog repository, you need to configure the GitHub actions in your repository. Create the GitHub actions automated deployment process file at `.github/workflows/deploy.yml` with the following content
+一旦你创建好了你的博客仓库，需要在你的仓库中配置GitHub Actions，在 `.github/workflows/deploy.yml` 创建GitHub Actions自动部署流程文件，内容如下：
 
 ```yaml
 name: Build and Deploy
@@ -115,7 +115,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deploy
-        uses: zonemeen/gitpress@v1.0.12 # Use latest version
+        uses: zonemeen/gitpress@v1.0.12 # 使用最新版本
         with:
-          branch: gh-pages # Optional branch for GitHub Pages
+          branch: gh-pages # GitHub Pages的可选分支
 ```
