@@ -52,7 +52,7 @@
   padding-left: 1.75em;
 }*/
 .prose ol > li::before {
-  content: counter(list-item, var(--list-counter-style, decimal)) ".";
+  /*content: counter(list-item, var(--list-counter-style, decimal)) ".";*/
   position: absolute;
   font-weight: 400;
   color: #6b7280;
@@ -63,7 +63,7 @@
   padding-left: 1.75em;
 }*/
 .prose ul > li::before {
-  content: "";
+  /*content: "";*/
   position: absolute;
   background-color: #d1d5db;
   border-radius: 50%;
