@@ -95,9 +95,9 @@ export async function prepareTheme(configuration: ConfigurationType) {
       let { title, date, permalink, externalUrl } = data
 
       if (!date) {
-        date = dayjs().format('YYYY, MMMM DD, ddd')
+        date = dayjs().format('ddd, MMMM DD, YYYY')
       } else {
-        date = dayjs(date).format('YYYY, MMMM DD, ddd')
+        date = dayjs(date).format('ddd, MMMM DD, YYYY')
       }
 
       const postHtml = markdown.render(content).replaceAll('../static', '')
