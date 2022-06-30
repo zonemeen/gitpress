@@ -337,10 +337,10 @@ function prepareTheme(configuration) {
                     const { data, content } = (0, gray_matter_1.default)(rawContent);
                     let { title, date, permalink, externalUrl } = data;
                     if (!date) {
-                        date = (0, dayjs_1.default)().format('ddd, MMMM DD, YYYY');
+                        date = (0, dayjs_1.default)().format('YYYY, MMMM DD, ddd');
                     }
                     else {
-                        date = (0, dayjs_1.default)(date).format('ddd, MMMM DD, YYYY');
+                        date = (0, dayjs_1.default)(date).format('YYYY, MMMM DD, ddd');
                     }
                     const postHtml = markdown.render(content).replace('../static', '');
                     const fullFileName = (permalink || (0, utils_1.slugify)(title).toLowerCase()).replace(/^\//, '');

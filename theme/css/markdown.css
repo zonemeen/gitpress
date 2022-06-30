@@ -72,7 +72,7 @@ html.dark {
 
 .prose a:hover {
   color: #00A3EC;
-  border-bottom: 1px solid var(--fg);
+  /*border-bottom: 1px solid var(--fg);*/
 }
 
 .prose a code {
