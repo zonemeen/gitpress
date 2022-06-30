@@ -100,7 +100,7 @@ export async function prepareTheme(configuration: ConfigurationType) {
         date = dayjs(date).format('YYYY, MMMM DD, ddd')
       }
 
-      const postHtml = markdown.render(content).replace('../static', '')
+      const postHtml = markdown.render(content).replaceAll('../static', '')
       const fullFileName = (permalink || slugify(title).toLowerCase()).replace(
         /^\//,
         ''

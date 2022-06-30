@@ -2,34 +2,23 @@ require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 1989:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.deploy = void 0;
 const execute_1 = __nccwpck_require__(3190);
-function deploy(configuration) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const outputPath = configuration.outputDir;
-        yield (0, execute_1.execute)(`git init`, outputPath);
-        yield (0, execute_1.execute)(`git config user.name "${configuration.pusherName}"`, outputPath);
-        yield (0, execute_1.execute)(`git config user.email "${configuration.pusherEmail}"`, outputPath);
-        yield (0, execute_1.execute)(`git remote add origin ${configuration.repoUrl}`, outputPath);
-        yield (0, execute_1.execute)(`git checkout -b ${configuration.branch}`, outputPath);
-        yield (0, execute_1.execute)(`git add .`, outputPath);
-        yield (0, execute_1.execute)(`git commit -m "[Action GitHub Pages Blog] Prepare blog"`, outputPath);
-        yield (0, execute_1.execute)(`git push origin ${configuration.branch} --force`, outputPath);
-    });
+async function deploy(configuration) {
+    const outputPath = configuration.outputDir;
+    await (0, execute_1.execute)(`git init`, outputPath);
+    await (0, execute_1.execute)(`git config user.name "${configuration.pusherName}"`, outputPath);
+    await (0, execute_1.execute)(`git config user.email "${configuration.pusherEmail}"`, outputPath);
+    await (0, execute_1.execute)(`git remote add origin ${configuration.repoUrl}`, outputPath);
+    await (0, execute_1.execute)(`git checkout -b ${configuration.branch}`, outputPath);
+    await (0, execute_1.execute)(`git add .`, outputPath);
+    await (0, execute_1.execute)(`git commit -m "[Action GitHub Pages Blog] Prepare blog"`, outputPath);
+    await (0, execute_1.execute)(`git push origin ${configuration.branch} --force`, outputPath);
 }
 exports.deploy = deploy;
 
@@ -41,15 +30,6 @@ exports.deploy = deploy;
 
 "use strict";
 
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -58,21 +38,19 @@ exports.stderr = exports.stdout = exports.execute = void 0;
 const exec_1 = __nccwpck_require__(5082);
 const buffer_1 = __importDefault(__nccwpck_require__(4300));
 const output = { stdout: '', stderr: '' };
-function execute(cmd, cwd, silent = false, ignoreReturnCode = false) {
-    return __awaiter(this, void 0, void 0, function* () {
-        output.stdout = '';
-        output.stderr = '';
-        yield (0, exec_1.exec)(cmd, [], {
-            silent,
-            cwd,
-            listeners: {
-                stdout,
-                stderr
-            },
-            ignoreReturnCode
-        });
-        return Promise.resolve(output);
+async function execute(cmd, cwd, silent = false, ignoreReturnCode = false) {
+    output.stdout = '';
+    output.stderr = '';
+    await (0, exec_1.exec)(cmd, [], {
+        silent,
+        cwd,
+        listeners: {
+            stdout,
+            stderr
+        },
+        ignoreReturnCode
     });
+    return Promise.resolve(output);
 }
 exports.execute = execute;
 function stdout(data) {
@@ -96,40 +74,29 @@ exports.stderr = stderr;
 /***/ }),
 
 /***/ 5616:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.configureRepo = void 0;
 const core_1 = __nccwpck_require__(6953);
 const execute_1 = __nccwpck_require__(3190);
-function configureRepo(configuration) {
-    return __awaiter(this, void 0, void 0, function* () {
-        (0, core_1.info)('Configuring git');
-        try {
-            yield (0, execute_1.execute)(`git config --global --add safe.directory "${configuration.repoPath}"`, configuration.repoPath);
-        }
-        catch (_a) {
-            (0, core_1.info)('Unable to set repoPath as a safe directory…');
-        }
-        yield (0, execute_1.execute)(`git config --global init.defaultBranch master`, configuration.repoPath);
-        yield (0, execute_1.execute)(`git config user.name "${configuration.pusherName}"`, configuration.repoPath);
-        yield (0, execute_1.execute)(`git config user.email "${configuration.pusherEmail}"`, configuration.repoPath);
-        yield (0, execute_1.execute)(`git config core.ignorecase false`, configuration.repoPath);
-        yield (0, execute_1.execute)(`git remote rm origin`, configuration.repoPath);
-        yield (0, execute_1.execute)(`git remote add origin ${configuration.repoUrl}`, configuration.repoPath);
-        (0, core_1.info)('Git configured');
-    });
+async function configureRepo(configuration) {
+    (0, core_1.info)('Configuring git');
+    try {
+        await (0, execute_1.execute)(`git config --global --add safe.directory "${configuration.repoPath}"`, configuration.repoPath);
+    }
+    catch {
+        (0, core_1.info)('Unable to set repoPath as a safe directory…');
+    }
+    await (0, execute_1.execute)(`git config --global init.defaultBranch master`, configuration.repoPath);
+    await (0, execute_1.execute)(`git config user.name "${configuration.pusherName}"`, configuration.repoPath);
+    await (0, execute_1.execute)(`git config user.email "${configuration.pusherEmail}"`, configuration.repoPath);
+    await (0, execute_1.execute)(`git config core.ignorecase false`, configuration.repoPath);
+    await (0, execute_1.execute)(`git remote rm origin`, configuration.repoPath);
+    await (0, execute_1.execute)(`git remote add origin ${configuration.repoUrl}`, configuration.repoPath);
+    (0, core_1.info)('Git configured');
 }
 exports.configureRepo = configureRepo;
 
@@ -176,13 +143,13 @@ const { pusher, repository } = github.context.payload;
 const token = (0, core_1.getInput)('token') || process.env.GITHUB_TOKEN || '';
 const branch = (0, core_1.getInput)('branch') || 'gh-pages';
 const hostname = 'github.com';
-const repositoryName = (repository === null || repository === void 0 ? void 0 : repository.full_name) || process.env.GITHUB_REPOSITORY || '';
+const repositoryName = repository?.full_name || process.env.GITHUB_REPOSITORY || '';
 const repoPath = process.env.GITHUB_WORKSPACE || path_1.default.join(__dirname, '../');
 const outputDir = path_1.default.join(repoPath, 'output');
 (0, runner_1.run)({
     token,
-    pusherName: (pusher === null || pusher === void 0 ? void 0 : pusher.name) || process.env.GITHUB_PUSHER_NAME,
-    pusherEmail: (pusher === null || pusher === void 0 ? void 0 : pusher.email) || process.env.GITHUB_PUSHER_EMAIL,
+    pusherName: pusher?.name || process.env.GITHUB_PUSHER_NAME,
+    pusherEmail: pusher?.email || process.env.GITHUB_PUSHER_EMAIL,
     repositoryName,
     hostname,
     repoPath,
@@ -196,37 +163,26 @@ const outputDir = path_1.default.join(repoPath, 'output');
 /***/ }),
 
 /***/ 4629:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = void 0;
 const core_1 = __nccwpck_require__(6953);
 const git_1 = __nccwpck_require__(5616);
 const theme_1 = __nccwpck_require__(8136);
 const deploy_1 = __nccwpck_require__(1989);
-function run(configuration) {
-    return __awaiter(this, void 0, void 0, function* () {
-        (0, core_1.info)('Checking configuration and starting deployment');
-        try {
-            yield (0, git_1.configureRepo)(configuration);
-        }
-        catch (e) {
-            throw new Error(`There was an error initializing the repository: ${e.message}`);
-        }
-        yield (0, theme_1.prepareTheme)(configuration);
-        yield (0, deploy_1.deploy)(configuration);
-    });
+async function run(configuration) {
+    (0, core_1.info)('Checking configuration and starting deployment');
+    try {
+        await (0, git_1.configureRepo)(configuration);
+    }
+    catch (e) {
+        throw new Error(`There was an error initializing the repository: ${e.message}`);
+    }
+    await (0, theme_1.prepareTheme)(configuration);
+    await (0, deploy_1.deploy)(configuration);
 }
 exports.run = run;
 
@@ -238,15 +194,6 @@ exports.run = run;
 
 "use strict";
 
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -301,126 +248,112 @@ const markdown = (0, markdown_it_1.default)({
     includeLevel: [1, 2, 3, 4],
     slugify: utils_1.slugify
 });
-function prepareTheme(configuration) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const outputDir = configuration.outputDir;
-        const repoPath = configuration.repoPath;
-        const siteConfig = require(path_1.default.join(configuration.repoPath, './site.json'));
-        const postsDir = path_1.default.join(configuration.repoPath, './posts');
-        const themePath = path_1.default.join(__dirname, '../theme');
-        function prepareThemeFiles() {
-            return __awaiter(this, void 0, void 0, function* () {
-                (0, core_1.info)('Preparing theme files');
-                const nonPageFiles = fs_1.default
-                    .readdirSync(themePath)
-                    .filter(file => !file.endsWith('.ejs') && !file.startsWith('_'));
-                for (const file of nonPageFiles) {
-                    const nonPageFilePath = path_1.default.join(themePath, file);
-                    const outputPath = path_1.default.join(outputDir, file);
-                    fs_extra_1.default.copySync(nonPageFilePath, outputPath);
-                }
-                if (siteConfig.cname) {
-                    fs_1.default.writeFileSync(path_1.default.join(outputDir, 'CNAME'), siteConfig.cname);
-                }
-                // Create the file to bypass jekyll execution by github pages
-                fs_1.default.writeFileSync(path_1.default.join(outputDir, '.nojekyll'), '');
-            });
+async function prepareTheme(configuration) {
+    const outputDir = configuration.outputDir;
+    const repoPath = configuration.repoPath;
+    const siteConfig = require(path_1.default.join(configuration.repoPath, './site.json'));
+    const postsDir = path_1.default.join(configuration.repoPath, './posts');
+    const themePath = path_1.default.join(__dirname, '../theme');
+    async function prepareThemeFiles() {
+        (0, core_1.info)('Preparing theme files');
+        const nonPageFiles = fs_1.default
+            .readdirSync(themePath)
+            .filter(file => !file.endsWith('.ejs') && !file.startsWith('_'));
+        for (const file of nonPageFiles) {
+            const nonPageFilePath = path_1.default.join(themePath, file);
+            const outputPath = path_1.default.join(outputDir, file);
+            fs_extra_1.default.copySync(nonPageFilePath, outputPath);
         }
-        function prepareBlogPosts() {
-            return __awaiter(this, void 0, void 0, function* () {
-                (0, core_1.info)('Preparing blog posts');
-                const postFiles = fs_1.default.readdirSync(postsDir);
-                const posts = [];
-                for (let contentFile of postFiles) {
-                    const contentFilePath = path_1.default.join(postsDir, contentFile);
-                    const rawContent = fs_1.default.readFileSync(contentFilePath, 'utf-8');
-                    const { data, content } = (0, gray_matter_1.default)(rawContent);
-                    let { title, date, permalink, externalUrl } = data;
-                    if (!date) {
-                        date = (0, dayjs_1.default)().format('YYYY, MMMM DD, ddd');
-                    }
-                    else {
-                        date = (0, dayjs_1.default)(date).format('YYYY, MMMM DD, ddd');
-                    }
-                    const postHtml = markdown.render(content).replace('../static', '');
-                    const fullFileName = (permalink || (0, utils_1.slugify)(title).toLowerCase()).replace(/^\//, '');
-                    const fullFileNameParts = fullFileName.replace(/\/$/, '').split('/');
-                    const fileName = fullFileNameParts.pop() || '';
-                    const nestedPostDir = fullFileNameParts.join('/');
-                    if (nestedPostDir) {
-                        fs_extra_1.default.ensureDirSync(path_1.default.join(outputDir, nestedPostDir));
-                    }
-                    const postMeta = {
-                        title,
-                        date,
-                        permalink: path_1.default.join('/', nestedPostDir, fileName),
-                        externalUrl,
-                        html: postHtml
-                    };
-                    const postFileTemplate = path_1.default.join(themePath, 'post.ejs');
-                    const populatedTemplate = yield ejs_1.default.renderFile(postFileTemplate, {
-                        post: postMeta,
-                        siteConfig
-                    });
-                    fs_1.default.writeFileSync(path_1.default.join(outputDir, nestedPostDir, `${fileName}.html`), populatedTemplate);
-                    posts.push(postMeta);
-                }
-                return posts;
-            });
+        if (siteConfig.cname) {
+            fs_1.default.writeFileSync(path_1.default.join(outputDir, 'CNAME'), siteConfig.cname);
         }
-        function prepareAbout() {
-            return __awaiter(this, void 0, void 0, function* () {
-                (0, core_1.info)('Preparing about page');
-                const aboutContent = fs_1.default.readFileSync(path_1.default.join(repoPath, 'about.md'), 'utf-8');
-                const html = markdown.render(aboutContent);
-                const populatedTemplate = yield ejs_1.default.renderFile(path_1.default.join(themePath, 'about.ejs'), {
-                    siteConfig,
-                    html
-                });
-                fs_1.default.writeFileSync(path_1.default.join(outputDir, 'about.html'), populatedTemplate);
+        // Create the file to bypass jekyll execution by github pages
+        fs_1.default.writeFileSync(path_1.default.join(outputDir, '.nojekyll'), '');
+    }
+    async function prepareBlogPosts() {
+        (0, core_1.info)('Preparing blog posts');
+        const postFiles = fs_1.default.readdirSync(postsDir);
+        const posts = [];
+        for (let contentFile of postFiles) {
+            const contentFilePath = path_1.default.join(postsDir, contentFile);
+            const rawContent = fs_1.default.readFileSync(contentFilePath, 'utf-8');
+            const { data, content } = (0, gray_matter_1.default)(rawContent);
+            let { title, date, permalink, externalUrl } = data;
+            if (!date) {
+                date = (0, dayjs_1.default)().format('YYYY, MMMM DD, ddd');
+            }
+            else {
+                date = (0, dayjs_1.default)(date).format('YYYY, MMMM DD, ddd');
+            }
+            const postHtml = markdown.render(content).replaceAll('../static', '');
+            const fullFileName = (permalink || (0, utils_1.slugify)(title).toLowerCase()).replace(/^\//, '');
+            const fullFileNameParts = fullFileName.replace(/\/$/, '').split('/');
+            const fileName = fullFileNameParts.pop() || '';
+            const nestedPostDir = fullFileNameParts.join('/');
+            if (nestedPostDir) {
+                fs_extra_1.default.ensureDirSync(path_1.default.join(outputDir, nestedPostDir));
+            }
+            const postMeta = {
+                title,
+                date,
+                permalink: path_1.default.join('/', nestedPostDir, fileName),
+                externalUrl,
+                html: postHtml
+            };
+            const postFileTemplate = path_1.default.join(themePath, 'post.ejs');
+            const populatedTemplate = await ejs_1.default.renderFile(postFileTemplate, {
+                post: postMeta,
+                siteConfig
             });
+            fs_1.default.writeFileSync(path_1.default.join(outputDir, nestedPostDir, `${fileName}.html`), populatedTemplate);
+            posts.push(postMeta);
         }
-        function prepareStaticPages() {
-            return __awaiter(this, void 0, void 0, function* () {
-                (0, core_1.info)('Preparing 404 page');
-                const populatedTemplate = yield ejs_1.default.renderFile(path_1.default.join(themePath, '404.ejs'), { siteConfig });
-                fs_1.default.writeFileSync(path_1.default.join(outputDir, '404.html'), populatedTemplate);
-            });
-        }
-        function prepareHome(posts) {
-            return __awaiter(this, void 0, void 0, function* () {
-                (0, core_1.info)('Preparing homepage');
-                const groupedPosts = posts.reduce((aggMap, postItem) => {
-                    const year = (0, dayjs_1.default)(postItem.date).format('YYYY');
-                    const postItems = [...(aggMap.get(year) || []), postItem];
-                    postItems.sort((a, b) => (0, dayjs_1.default)(b.date).valueOf() - (0, dayjs_1.default)(a.date).valueOf());
-                    aggMap.set(year, postItems);
-                    return aggMap;
-                }, new Map());
-                const homeHtml = yield ejs_1.default.renderFile(path_1.default.join(themePath, 'index.ejs'), {
-                    siteConfig,
-                    groupedPosts
-                });
-                fs_1.default.writeFileSync(path_1.default.join(outputDir, 'index.html'), homeHtml);
-            });
-        }
-        function copyStaticAssets() {
-            return __awaiter(this, void 0, void 0, function* () {
-                (0, core_1.info)('Copying static assets');
-                const staticAssetsPath = path_1.default.join(repoPath, 'static');
-                fs_extra_1.default.copySync(staticAssetsPath, outputDir);
-            });
-        }
-        // Remove and recreate the output directory
-        fs_extra_1.default.removeSync(configuration.outputDir);
-        fs_extra_1.default.ensureDirSync(configuration.outputDir);
-        yield prepareThemeFiles();
-        yield prepareAbout();
-        yield prepareStaticPages();
-        const posts = yield prepareBlogPosts();
-        yield prepareHome(posts);
-        yield copyStaticAssets();
-    });
+        return posts;
+    }
+    async function prepareAbout() {
+        (0, core_1.info)('Preparing about page');
+        const aboutContent = fs_1.default.readFileSync(path_1.default.join(repoPath, 'about.md'), 'utf-8');
+        const html = markdown.render(aboutContent);
+        const populatedTemplate = await ejs_1.default.renderFile(path_1.default.join(themePath, 'about.ejs'), {
+            siteConfig,
+            html
+        });
+        fs_1.default.writeFileSync(path_1.default.join(outputDir, 'about.html'), populatedTemplate);
+    }
+    async function prepareStaticPages() {
+        (0, core_1.info)('Preparing 404 page');
+        const populatedTemplate = await ejs_1.default.renderFile(path_1.default.join(themePath, '404.ejs'), { siteConfig });
+        fs_1.default.writeFileSync(path_1.default.join(outputDir, '404.html'), populatedTemplate);
+    }
+    async function prepareHome(posts) {
+        (0, core_1.info)('Preparing homepage');
+        const groupedPosts = posts.reduce((aggMap, postItem) => {
+            const year = (0, dayjs_1.default)(postItem.date).format('YYYY');
+            const postItems = [...(aggMap.get(year) || []), postItem];
+            postItems.sort((a, b) => (0, dayjs_1.default)(b.date).valueOf() - (0, dayjs_1.default)(a.date).valueOf());
+            aggMap.set(year, postItems);
+            return aggMap;
+        }, new Map());
+        const homeHtml = await ejs_1.default.renderFile(path_1.default.join(themePath, 'index.ejs'), {
+            siteConfig,
+            groupedPosts
+        });
+        fs_1.default.writeFileSync(path_1.default.join(outputDir, 'index.html'), homeHtml);
+    }
+    async function copyStaticAssets() {
+        (0, core_1.info)('Copying static assets');
+        const staticAssetsPath = path_1.default.join(repoPath, 'static');
+        fs_extra_1.default.copySync(staticAssetsPath, outputDir);
+    }
+    // Remove and recreate the output directory
+    fs_extra_1.default.removeSync(configuration.outputDir);
+    fs_extra_1.default.ensureDirSync(configuration.outputDir);
+    await prepareThemeFiles();
+    await prepareAbout();
+    await prepareStaticPages();
+    const posts = await prepareBlogPosts();
+    await prepareHome(posts);
+    await copyStaticAssets();
 }
 exports.prepareTheme = prepareTheme;
 
