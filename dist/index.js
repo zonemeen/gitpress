@@ -298,7 +298,7 @@ const markdown = (0, markdown_it_1.default)({
     }
 })
     .use(markdown_it_table_of_contents_1.default, {
-    includeLevel: [1, 2, 3],
+    includeLevel: [1, 2, 3, 4],
     slugify: utils_1.slugify
 });
 function prepareTheme(configuration) {
