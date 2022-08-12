@@ -18,6 +18,16 @@
 - [Blog Website](https://zonemeen.github.io/)
 - [简体中文](./README-CN.md)
 
+First visit the template repository at: [zonemeen.github.io](https://github.com/zonemeen/zonemeen.github.io), then click on `Use this template` on the right side of this repository.
+
+![gitpress-template](./.github/assets/gitpress-template.png)
+
+Then name the repository according to your `github username`: `yourname.github.io`.
+
+![create-gitpress-blog](./.github/assets/create-gitpress-blog.png)
+
+At the bottom are the specific configurations.
+
 ## Configure the Blog
 
 Create a repository(deployed via GitHub Pages, usually named yourname.github.io) on GitHub to host your blog, with the following directory structure:

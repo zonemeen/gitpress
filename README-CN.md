@@ -18,6 +18,16 @@
 - [博客地址](https://zonemeen.github.io/)
 - [English](./README.md)
 
+首先访问模板仓库：[zonemeen.github.io](https://github.com/zonemeen/zonemeen.github.io)，然后点击此仓库右侧的 `Use this template`：
+
+![gitpress-template](./.github/assets/gitpress-template.png)
+
+然后根据你的 `github username`，给仓库起名字: `yourname.github.io`：
+
+![create-gitpress-blog](./.github/assets/create-gitpress-blog.png)
+
+底下是具体的配置。
+
 ## 配置博客
 
 在GitHub上创建一个仓库（通过GitHub Pages部署，通常命名为yourname.github.io）来托管你的博客，其目录结构如下：
